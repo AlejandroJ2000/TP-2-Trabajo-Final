@@ -1,0 +1,32 @@
+{
+  "name": "tp-final",
+  "version": "1.0.0",
+  "description": "Realización del Trabajo Práctico Final Integrador",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "watch": "node --watch .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejandroJ2000/TP-2-Trabajo-Final.git"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "mvc",
+    "mongo"
+  ],
+  "author": "Alejandro Gabriel Jursza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlejandroJ2000/TP-2-Trabajo-Final/issues"
+  },
+  "homepage": "https://github.com/AlejandroJ2000/TP-2-Trabajo-Final#readme",
+  "dependencies": {
+    "dotenv": "^17.0.0",
+    "express": "^5.1.0"
+  }
+}
