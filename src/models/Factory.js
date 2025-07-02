@@ -1,4 +1,4 @@
-import ProductsMemModel from 'src/models/DAO/products.MemModel.js'
+import ProductsMemModel from './DAO/products.MemModel.js'
 import ProductsMongoModel from './DAO/products.MongoModel.js'
 
 import UsersMemModel from './DAO/users.MemModel.js'

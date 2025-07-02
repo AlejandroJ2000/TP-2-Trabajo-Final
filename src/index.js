@@ -13,8 +13,6 @@ app.use(express.json())
 app.use("/products", new ProductsRoutes().start())
 app.use("/users", new UsersRoutes().start())
 
-app.use("/api", new Router().startRoutes())
-
 app.use((req, res) => {
     res.status(404).json({
         code: 404,
