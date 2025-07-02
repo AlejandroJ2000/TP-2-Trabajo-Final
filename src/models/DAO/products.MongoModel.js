@@ -37,7 +37,7 @@ class ProductsMongoModel {
             const product = await MongoConnection.db.collection("products").findOne({ 
                 _id: new ObjectId(id)
             })
-            if(!producto) {
+            if(!product) {
                 throw new Error("ID inválido")
             }
         
@@ -76,7 +76,7 @@ class ProductsMongoModel {
             const product = await MongoConnection.db.collection("products").findOne({ 
                 _id: new ObjectId(id)
             })
-            if(!producto) {
+            if(!product) {
                 throw new Error("ID inválido")
             }
         
