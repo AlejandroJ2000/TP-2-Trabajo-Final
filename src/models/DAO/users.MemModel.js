@@ -63,4 +63,76 @@ class UsersMemModel {
             }
         ]
     }
+
+    getUsers = async () => {
+        return this.users
+    }
+
+    getUserById = async (id) => {
+        const user = this.users.find(u => u._id === id)
+        if(!user) {
+            throw new Error("Usuario no encontrado")
+        } else{
+            return user
+        }
+    }
+
+    postUser = async(data) => {
+        const newUser = {
+            _id: (this.users.length + 1).toString(),
+            ...data,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }
+        this.users.push(newUser)
+        return newUser
+    }
+
+    patchUser = async (id, data) => {
+        try {
+            const index = this.users.findIndex(u => u._id === id)
+            if(index === -1) {
+                throw new Error("Usuario no encontrado")
+            } else {
+                this.users[index] = {
+                    ...this.users[index],
+                    ...data,
+                    updatedAt: new Date()
+                }
+                return this.users[index]
+            }
+        } catch(error) {
+            console.error("La actualización parcial de usuarios tuvo un problema y no se pudo completar")
+        }    
+    }
+
+    updateUser = async (id, data) => {
+        try {
+            const index = this.users.findIndex(u => u._id === id)
+            if(index === -1) {
+                throw new Error("Usuario no encontrado")
+            } else {
+                this.users[index] = {
+                    ...data,
+                     _id: this.users[index]._id,
+                    updatedAt: new Date()
+                }
+                return this.users[index]
+            }
+        } catch(error) {
+            console.error("La actualización total de usuarios tuvo un problema y no se pudo completar")
+        }    
+    }
+
+    deleteUser = async (id) => {
+        const index = this.users.findIndex(u => u._id === id)
+        if(index === -1) {
+            throw new Error("Usuario no encontrado")
+        } else {
+            this.users.splice(index, 1)
+            return "Usuario eliminado correctamente"
+        }    
+    }
 }
+
+export default UsersMemModel
