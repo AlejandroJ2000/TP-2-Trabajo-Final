@@ -9,7 +9,7 @@ class UsersService {
         return await this.users.getUsers()
     }
 
-    getUsersById = async (id) => {
+    getUserById = async (id) => {
         return await this.users.getUserById(id)
     }
 

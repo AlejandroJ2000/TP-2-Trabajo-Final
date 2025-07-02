@@ -48,8 +48,11 @@ class ProductsMemModel {
     }
 
     postProduct = async (data) => {
-        data.id = this.prod[this.prod.length - 1]._id + 1
-        this.prod.push(data)
+        const productPosted = this.products[this.products.length - 1]
+        const newId = (parseInt(productPosted._id) + 1).toString()
+
+        data.id = newId
+        this.products.push(data)
         return data
     }
 
