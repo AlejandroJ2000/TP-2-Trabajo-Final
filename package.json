@@ -1,6 +1,6 @@
 {
   "name": "tp-final",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Realización del Trabajo Práctico Final Integrador",
   "main": "src/index.js",
   "type": "module",
@@ -26,7 +26,16 @@
   },
   "homepage": "https://github.com/AlejandroJ2000/TP-2-Trabajo-Final#readme",
   "dependencies": {
+    "axios": "^1.10.0",
     "dotenv": "^17.0.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "joi": "^17.13.3",
+    "mongodb": "^6.17.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "chai": "^5.2.0",
+    "mocha": "^11.7.1",
+    "supertest": "^7.1.1"
   }
 }
