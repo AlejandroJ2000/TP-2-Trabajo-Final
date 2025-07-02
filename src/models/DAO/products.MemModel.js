@@ -38,6 +38,15 @@ class ProductsMemModel {
         return this.products
     }
 
+    getProductById = async (id) => {
+        const product = this.products.find(p => p._id === id)
+        if(!product) {
+            throw new Error("Producto no encontrado")
+        } else{
+            return product
+        }
+    }
+
     postProduct = async (data) => {
         data.id = this.prod[this.prod.length - 1]._id + 1
         this.prod.push(data)
