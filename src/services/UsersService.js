@@ -1,4 +1,5 @@
 import Factory from "../models/Factory.js";
+import { validateUser } from "./validate/schema.js";
 
 class UsersService {
     constructor() {
@@ -14,6 +15,10 @@ class UsersService {
     }
 
     postUser = async (data) => {
+        const error = validateUser(data)
+        if(error) {
+            throw new Error(`Error de tipo validación: ${error}`)
+        }
         return await this.users.postUser(data)
     }
 

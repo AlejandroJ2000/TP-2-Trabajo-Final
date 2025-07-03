@@ -1,4 +1,5 @@
 import Factory from "../models/Factory.js"
+import { validateProduct } from "./validate/schema.js"
 
 class ProductsService {
     constructor() {
@@ -14,7 +15,11 @@ class ProductsService {
     }
 
     postProduct = async (data) => {
-        return await this.productsDAO.postProduct(data)
+        const error = validateProduct(data)
+        if (error) {
+            throw new Error(`Error de tipo validación: ${error}`)
+        }
+        return await this.productsDAO.postProduct(data)     
     }
 
     patchProduct = async (id, data) => {
