@@ -1,8 +1,12 @@
 import ProductsService from "../services/ProductsService.js";
+import CurrencyExtraService from "../services/CurrencyExtraService.js";
+import generator from "../extras/generator.js";
 
 class ProductsController {
     constructor() {
         this.productsService = new ProductsService()
+        this.currencyExtraService = new CurrencyExtraService()
+        this.randomProduct = this.randomProduct.bind(this)
     }
 
     getProducts = async (req, res) => {
@@ -65,6 +69,38 @@ class ProductsController {
             res.status(404).json({ error: error.message })
         }
     }
+
+    getProductPriceInARS = async (req, res) => {
+        try {
+          const { id } = req.params;
+
+          const productData = await this.productsService.getProductById(id);
+          const product = productData.product;
+
+          const exchangeRate = await this.currencyExtraService.getExchangeRate();
+          const usdPrice = product.price;
+          const priceInARS = parseFloat((usdPrice * exchangeRate.compra).toFixed(2));
+    
+          res.json({
+            message: productData.message,
+            product,
+            exchangeRate,
+            priceInARS
+          });
+    
+        } catch (error) {
+          res.status(500).json({ message: 'Error al obtener el precio en ARS.', error: error.message });
+        }
+      }
+
+    randomProduct = async (req, res) => {
+        try {
+            const random = generator.randomProd()
+            res.status(200).json(random)
+        } catch(error) {
+            res.status(500).json({ error: "Error al generar producto random." })
+        }
+    }  
 }
 
 export default ProductsController

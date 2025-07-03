@@ -14,6 +14,8 @@ class ProductsRoutes {
         this.router.patch("/:id", this.productsController.patchProduct)
         this.router.put("/:id", this.productsController.updatedProduct)
         this.router.delete("/:id", this.productsController.deleteProduct)
+        this.router.get("/convert/:id", this.productsController.getProductPriceInARS)
+        this.router.get("/prueba/random", this.productsController.randomProduct)
         return this.router
     }
 }
